@@ -1,4 +1,3 @@
-const escapeHtml = require('escape-html');
 const { readFileSync } = require('fs');
 const { JSDOM } = require('jsdom');
 const parse5 = require('parse5');
@@ -167,7 +166,7 @@ module.exports = ({ plugins = [] }) => {
       return [
         {
           type: 'text',
-          value: escapeHtml(value),
+          value
         },
       ];
     };
@@ -177,7 +176,7 @@ module.exports = ({ plugins = [] }) => {
     }
 
     if (
-      !languages.includes(lang.replace(/^diff-/, '')) &&
+      !languages.includes(lang.replace(/^diff-/, '').toLowerCase()) &&
       lang !== 'treeview'
     ) {
       return fallback();
